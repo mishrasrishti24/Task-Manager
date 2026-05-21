@@ -21,7 +21,7 @@ app.use(cors({
     origin: ["http://localhost:5173",
         "http://localhost:5174",
 
-        "https://task-manager-production-d2e2.up.railway.app"]
+        "https://task-manager-production-a581.up.railway.app"]
 }
 ))
 
