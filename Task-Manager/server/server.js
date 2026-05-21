@@ -1,6 +1,6 @@
 
-const dns = require("dns");
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+//const dns = require("dns");
+//dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const express = require("express")
 const mongoose = require("mongoose")
@@ -16,7 +16,14 @@ const app = express()
 
 
 
-app.use(cors())
+app.use(cors({
+
+    origin: ["http://localhost:5173",
+        "http://localhost:5174",
+
+        "https://task-manager-production-d2e2.up.railway.app"]
+}
+))
 
 app.use(express.json())
 app.use("/api/tasks", taskRoutes)
@@ -24,12 +31,12 @@ app.use("/api/tasks", taskRoutes)
 
 
 mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-    console.log("MongoDB Connected")
-})
-.catch((err) => {
-    console.log(err)
-})
+    .then(() => {
+        console.log("MongoDB Connected")
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 
 
 
