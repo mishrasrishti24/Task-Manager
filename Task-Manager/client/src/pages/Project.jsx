@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -21,7 +22,7 @@ export default function Projects() {
         };
 
         fetchProjects();
-    }, []);
+    }, [location]);
 
     if (loading) {
         return (
