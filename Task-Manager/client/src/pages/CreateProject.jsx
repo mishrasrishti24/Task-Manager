@@ -33,7 +33,7 @@ export default function CreateProject() {
 
         try {
             // ✅ ONLY FIXED ROUTE
-            await api.post("/api/projects", form);
+            await api.post("/projects", form);
 
             setSuccess("Project created successfully! Redirecting...");
             setTimeout(() => {

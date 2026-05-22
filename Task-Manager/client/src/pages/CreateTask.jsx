@@ -20,7 +20,7 @@ export default function CreateTask() {
     // Fetch projects
     const fetchProjects = async () => {
         try {
-            const res = await api.get("/api/projects");
+            const res = await api.get("/projects");
             setProjects(res.data.projects || []);
         } catch (err) {
             console.error("Error fetching projects:", err);
@@ -71,7 +71,7 @@ export default function CreateTask() {
         setLoading(true);
 
         try {
-            await api.post("/api/tasks/create", form);
+            await api.post("/tasks/create", form);
 
             setSuccess("Task issued and assigned successfully!");
 

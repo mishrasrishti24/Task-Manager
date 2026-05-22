@@ -10,7 +10,7 @@ export default function Tasks() {
     const fetchTasks = async () => {
         try {
             setLoading(true);
-            const res = await api.get("/api/tasks/all");
+            const res = await api.get("/tasks/all");
             setTasks(res.data.tasks || []);
         } catch (error) {
             console.error("Error fetching tasks:", error);
@@ -25,7 +25,7 @@ export default function Tasks() {
 
     const updateStatus = async (taskId, status) => {
         try {
-            await api.put("/api/tasks/update-status", {
+            await api.put("/tasks/update-status", {
                 taskId,
                 status
             });

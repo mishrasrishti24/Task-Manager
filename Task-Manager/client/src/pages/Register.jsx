@@ -20,7 +20,7 @@ const Register = () => {
         setLoading(true);
 
         try {
-            await api.post("/api/auth/register", {
+            await api.post("/auth/register", {
                 username,
                 email,
                 password,

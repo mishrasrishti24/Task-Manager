@@ -11,8 +11,8 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
         try {
             setLoading(true);
-            const projectRes = await api.get("/api/projects");
-            const taskRes = await api.get("/api/tasks/all");
+            const projectRes = await api.get("/projects");
+            const taskRes = await api.get("/tasks/all");
 
             setProjects(projectRes.data.projects || []);
             setTasks(taskRes.data.tasks || []);
