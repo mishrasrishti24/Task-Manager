@@ -32,7 +32,8 @@ export default function CreateProject() {
         setLoading(true);
 
         try {
-            const res = await api.post("/projects", form);
+            // ✅ ONLY FIXED ROUTE
+            await api.post("/api/projects", form);
 
             setSuccess("Project created successfully! Redirecting...");
             setTimeout(() => {
@@ -48,13 +49,11 @@ export default function CreateProject() {
 
     return (
         <div className="min-h-[calc(100vh-73px)] bg-slate-950 text-slate-100 p-8 flex items-center justify-center relative overflow-hidden">
-            {/* Ambient Background glows */}
             <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="w-full max-w-xl bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 p-8 rounded-3xl shadow-2xl relative z-10 space-y-6">
 
-                {/* Header */}
                 <div className="space-y-1">
                     <h2 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                         Create Project Workspace
@@ -64,7 +63,6 @@ export default function CreateProject() {
                     </p>
                 </div>
 
-                {/* Notifications */}
                 {error && (
                     <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 px-4 py-3 rounded-xl text-xs flex items-center gap-2 animate-pulse">
                         <span className="w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
@@ -79,10 +77,11 @@ export default function CreateProject() {
                     </div>
                 )}
 
-                {/* Form */}
                 <form onSubmit={createProject} className="space-y-4">
                     <div className="space-y-1.5">
-                        <label className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">Project Name</label>
+                        <label className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">
+                            Project Name
+                        </label>
                         <input
                             name="name"
                             placeholder="e.g. Q3 Mobile Client Release"
@@ -95,7 +94,9 @@ export default function CreateProject() {
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">Project Description</label>
+                        <label className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">
+                            Project Description
+                        </label>
                         <textarea
                             name="description"
                             placeholder="Detail the scope, team goals, and critical deliverables of this project workspace..."
