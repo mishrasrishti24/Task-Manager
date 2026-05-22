@@ -37,11 +37,14 @@ async function createProjectController(req, res) {
 }
 
 
-// ✅ GET ALL PROJECTS (user is member)
+// ✅ GET ALL PROJECTS (user is member OR admin)
 async function getProjectsController(req, res) {
     try {
         const projects = await projectModel.find({
-            members: req.user.id
+            $or: [
+                { admin: req.user.id },
+                { members: req.user.id }
+            ]
         })
             .populate("admin", "username email role")
             .populate("members", "username email role");

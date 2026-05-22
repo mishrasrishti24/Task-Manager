@@ -32,11 +32,11 @@ export default function CreateProject() {
         setLoading(true);
 
         try {
-            await api.post("/api/projects", form);
+            const res = await api.post("/projects", form);
 
             setSuccess("Project created successfully! Redirecting...");
             setTimeout(() => {
-                navigate("/projects");
+                navigate("/projects", { state: { refresh: true } });
             }, 1200);
 
         } catch (err) {
