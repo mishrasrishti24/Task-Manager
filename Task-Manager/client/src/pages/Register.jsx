@@ -20,7 +20,7 @@ const Register = () => {
         setLoading(true);
 
         try {
-            await api.post("/auth/register", {
+            await api.post("/api/auth/register", {
                 username,
                 email,
                 password,
@@ -28,7 +28,7 @@ const Register = () => {
             });
 
             setSuccess("Registration Successful! Redirecting to login...");
-            
+
             setTimeout(() => {
                 navigate("/login");
             }, 1200);
@@ -50,7 +50,7 @@ const Register = () => {
             <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="w-full max-w-md bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 p-8 rounded-3xl shadow-2xl relative z-10 space-y-6">
-                
+
                 {/* Logo & Header */}
                 <div className="text-center space-y-2">
                     <div className="w-12 h-12 bg-gradient-to-tr from-pink-500 to-indigo-600 rounded-2xl flex items-center justify-center font-extrabold text-white text-2xl mx-auto shadow-lg shadow-indigo-500/20 mb-2">
