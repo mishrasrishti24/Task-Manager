@@ -11,7 +11,7 @@ const {
 } = require("../controller/taskController")
 
 const { authUser } =
-require("../middleware/authMiddleware")
+    require("../middleware/authMiddleware")
 
 const taskRouter = Router()
 

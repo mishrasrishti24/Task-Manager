@@ -11,7 +11,7 @@ async function registerUserController(req, res) {
         const { username, email, password,
             role
 
-         } = req.body
+        } = req.body
 
         if (!username || !email || !password) {
             return res.status(400).json({
@@ -139,7 +139,7 @@ async function getMeController(req, res) {
     try {
 
         const user =
-        await userModel.findById(req.user.id)
+            await userModel.findById(req.user.id)
 
         res.status(200).json({
 
