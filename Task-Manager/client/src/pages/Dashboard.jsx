@@ -11,8 +11,8 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
         try {
             setLoading(true);
-            const projectRes = await api.get("/projects");
-            const taskRes = await api.get("/tasks/all");
+            const projectRes = await api.get("/api/projects");
+            const taskRes = await api.get("/api/tasks/all");
 
             setProjects(projectRes.data.projects || []);
             setTasks(taskRes.data.tasks || []);
@@ -81,7 +81,7 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100 p-8">
             <div className="max-w-7xl mx-auto space-y-8">
-                
+
                 {/* Header Welcome Card */}
                 <div className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800 p-8 rounded-3xl shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div className="absolute -right-20 -top-20 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -192,8 +192,8 @@ const Dashboard = () => {
                                                 <span className="text-indigo-400">{completionPercentage}%</span>
                                             </div>
                                             <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-850">
-                                                <div 
-                                                    className="bg-gradient-to-r from-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-500" 
+                                                <div
+                                                    className="bg-gradient-to-r from-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-500"
                                                     style={{ width: `${completionPercentage}%` }}
                                                 ></div>
                                             </div>

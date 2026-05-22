@@ -20,7 +20,7 @@ export default function ProjectDetails() {
         try {
             setLoading(true);
             setError("");
-            const res = await api.get("/projects");
+            const res = await api.get("/api/projects");
             const found = res.data.projects.find(p => p._id === projectId);
             if (!found) {
                 setError("Project workspace not found.");
@@ -52,7 +52,7 @@ export default function ProjectDetails() {
         setActionLoading(true);
 
         try {
-            await api.put(`/projects/${projectId}/add-member`, {
+            await api.put(`/api/projects/${projectId}/add-member`, {
                 userId: userId.trim()
             });
 
@@ -82,7 +82,7 @@ export default function ProjectDetails() {
         setActionLoading(true);
 
         try {
-            await api.put(`/projects/${projectId}/remove-member`, {
+            await api.put(`api/projects/${projectId}/remove-member`, {
                 userId: memberId
             });
 
@@ -166,7 +166,7 @@ export default function ProjectDetails() {
 
                 {/* Content grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    
+
                     {/* Member list column */}
                     <div className="lg:col-span-2 bg-slate-900/60 border border-slate-800/80 p-8 rounded-3xl shadow-lg space-y-6">
                         <div className="flex justify-between items-center">
@@ -195,11 +195,10 @@ export default function ProjectDetails() {
                                         </div>
 
                                         <div className="flex items-center gap-3">
-                                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                                                isMemberAdmin
-                                                    ? "bg-indigo-500/10 border border-indigo-500/20 text-indigo-400"
-                                                    : "bg-slate-800 border border-slate-700/50 text-slate-300"
-                                            }`}>
+                                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${isMemberAdmin
+                                                ? "bg-indigo-500/10 border border-indigo-500/20 text-indigo-400"
+                                                : "bg-slate-800 border border-slate-700/50 text-slate-300"
+                                                }`}>
                                                 {isMemberAdmin ? "Admin" : m.role || "Member"}
                                             </span>
 

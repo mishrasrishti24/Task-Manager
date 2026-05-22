@@ -10,7 +10,7 @@ export default function Tasks() {
     const fetchTasks = async () => {
         try {
             setLoading(true);
-            const res = await api.get("/tasks/all");
+            const res = await api.get("/api/tasks/all");
             setTasks(res.data.tasks || []);
         } catch (error) {
             console.error("Error fetching tasks:", error);
@@ -25,7 +25,7 @@ export default function Tasks() {
 
     const updateStatus = async (taskId, status) => {
         try {
-            await api.put("/tasks/update-status", {
+            await api.put("/api/tasks/update-status", {
                 taskId,
                 status
             });
@@ -137,7 +137,7 @@ export default function Tasks() {
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100 p-8">
             <div className="max-w-7xl mx-auto space-y-8">
-                
+
                 {/* Header Section */}
                 <div className="flex justify-between items-center">
                     <div>
@@ -152,7 +152,7 @@ export default function Tasks() {
 
                 {/* Kanban columns */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                    
+
                     {/* Todo Column */}
                     <div className="bg-slate-900/40 border border-slate-850 p-5 rounded-2xl space-y-4">
                         <div className="flex justify-between items-center border-b border-slate-850 pb-3">
