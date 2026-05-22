@@ -12,6 +12,7 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:5174",
+    "https://task-manager-production-d2e2.up.railway.app", // Added your live production URL here
     process.env.CLIENT_URL
 ];
 
