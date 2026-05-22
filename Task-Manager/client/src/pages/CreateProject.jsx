@@ -26,17 +26,19 @@ export default function CreateProject() {
             setError("Project name is required.");
             return;
         }
-        
+
         setError("");
         setSuccess("");
         setLoading(true);
 
         try {
-            await api.post("/projects", form);
+            await api.post("/api/projects", form);
+
             setSuccess("Project created successfully! Redirecting...");
             setTimeout(() => {
                 navigate("/projects");
             }, 1200);
+
         } catch (err) {
             setError(err.response?.data?.message || "Failed to create project. Please try again.");
         } finally {
@@ -51,7 +53,7 @@ export default function CreateProject() {
             <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="w-full max-w-xl bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 p-8 rounded-3xl shadow-2xl relative z-10 space-y-6">
-                
+
                 {/* Header */}
                 <div className="space-y-1">
                     <h2 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
