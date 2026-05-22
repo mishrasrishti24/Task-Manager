@@ -20,7 +20,7 @@ export default function ProjectDetails() {
         try {
             setLoading(true);
             setError("");
-            const res = await api.get("/api/projects");
+            const res = await api.get("/projects");
             const found = res.data.projects.find(p => p._id === projectId);
             if (!found) {
                 setError("Project workspace not found.");
@@ -52,7 +52,7 @@ export default function ProjectDetails() {
         setActionLoading(true);
 
         try {
-            await api.put(`/api/projects/${projectId}/add-member`, {
+            await api.put(`/projects/${projectId}/add-member`, {
                 userId: userId.trim()
             });
 
@@ -82,7 +82,7 @@ export default function ProjectDetails() {
         setActionLoading(true);
 
         try {
-            await api.put(`api/projects/${projectId}/remove-member`, {
+            await api.put(`/projects/${projectId}/remove-member`, {
                 userId: memberId
             });
 

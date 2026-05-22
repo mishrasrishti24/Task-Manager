@@ -11,7 +11,7 @@ export default function Projects() {
         const fetchProjects = async () => {
             try {
                 setLoading(true);
-                const res = await api.get("/api/projects");
+                const res = await api.get("/projects");
                 setProjects(res.data.projects || []);
             } catch (err) {
                 console.error("Error fetching projects:", err);
